@@ -1,0 +1,64 @@
+<div>
+  <h2>Eventos</h2>
+  <div class="form-inline">
+    <div class="form-group mb-2">
+      <label class="mr-2" for="buscar">Filtro:</label>
+      <input
+        type="text"
+        class="form-control-sm mr-2"
+        id="buscar"
+        placeholder="buscar"
+        [(ngModel)]="filtroLista"
+      />
+    </div>
+  </div>
+  <table class="table table-striped">
+    <thead class="thead-dark">
+      <tr>
+        <td>
+          <button class="btn btn-sm btn-primary" (click)="alterarImagem()">
+            <i *ngIf="mostrarImagem" class="far fa-eye"></i>
+            <i *ngIf="!mostrarImagem" class="far fa-eye-slash"></i>
+          </button>
+        </td>
+        <td>#</td>
+        <td>Tema</td>
+        <td>Local</td>
+        <td>Data</td>
+        <td>Qtd Pessoas</td>
+        <td>Lote</td>
+        <td>Opções</td>
+      </tr>
+    </thead>
+    <tbody *ngIf="eventosFiltrados && eventos.length">
+      <tr *ngFor="let evento of eventosFiltrados">
+        <td>
+          <img
+            src="http://localhost:5000/img/{{evento.imageUrl}}"
+            [style.width.px]="imagemLargura"
+            [style.margin.px]="imagemMargem"
+            [style.borderRadius.px]="2"
+            *ngIf="mostrarImagem"
+          />
+        </td>
+        <td>{{evento.eventoId}}</td>
+        <td>{{evento.tema}}</td>
+        <td>{{evento.local}}</td>
+        <td>{{evento.dataEvento}}</td>
+        <td>{{evento.qtdPessoas}}</td>
+        <td>{{evento.lote}}</td>
+        <td>
+          <button class="btn btn-sm btn-success"></button>
+          <button class="btn btn-sm btn-danger"></button>
+        </td>
+      </tr>
+    </tbody>
+    <tfoot *ngIf="!eventos.length">
+      <tr>
+        <td colspan="7" class="text-center">
+          Nenhum evento encontrado!
+        </td>
+      </tr>
+    </tfoot>
+  </table>
+</div>
