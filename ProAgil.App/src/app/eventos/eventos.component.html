@@ -17,8 +17,7 @@
       <tr>
         <td>
           <button class="btn btn-sm btn-primary" (click)="alterarImagem()">
-            <i *ngIf="mostrarImagem" class="far fa-eye"></i>
-            <i *ngIf="!mostrarImagem" class="far fa-eye-slash"></i>
+            <i class="fa {{mostrarImagem ? ' fa-eye' : ' fa-eye-slash'}}"></i>
           </button>
         </td>
         <td>#</td>
@@ -41,15 +40,33 @@
             *ngIf="mostrarImagem"
           />
         </td>
-        <td>{{evento.eventoId}}</td>
+        <td>{{evento.id}}</td>
         <td>{{evento.tema}}</td>
         <td>{{evento.local}}</td>
-        <td>{{evento.dataEvento}}</td>
+        <td>{{evento.dataEvento | DateTimeFormatPipe}}</td>
         <td>{{evento.qtdPessoas}}</td>
-        <td>{{evento.lote}}</td>
         <td>
-          <button class="btn btn-sm btn-success"></button>
-          <button class="btn btn-sm btn-danger"></button>
+          <span *ngIf="!evento.lotes.length">
+            Não informado
+          </span>
+          <span *ngIf="evento.lotes.length">
+            {{evento.lotes[0].nome}}
+          </span>
+        </td>
+        <td>
+          <div class="btn-group">
+            <button
+              class="btn btn-xs btn-success"
+              tooltip="Editar"
+              (click)="openModal(template)"
+            >
+              <i class="fa fa-edit"></i>
+            </button>
+            <button class="btn btn-xs btn-danger" tooltip="Excluir">
+              <i class="fa fa-trash"></i>
+            </button>
+          </div>
+
         </td>
       </tr>
     </tbody>
@@ -61,4 +78,22 @@
       </tr>
     </tfoot>
   </table>
+
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Modal</h4>
+      <button
+        type="button"
+        class="close pull-right"
+        aria-label="Close"
+        (click)="modalRef.hide()"
+      >
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+      This is a modal.
+    </div>
+  </ng-template>
+
 </div>
