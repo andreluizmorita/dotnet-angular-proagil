@@ -7,3 +7,12 @@ C:\CSharp\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.AssemblyInfoInp
 C:\CSharp\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.AssemblyInfo.cs
 C:\CSharp\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.dll
 C:\CSharp\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.pdb
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\bin\Debug\netstandard2.0\ProAgil.Domain.deps.json
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\bin\Debug\netstandard2.0\ProAgil.Domain.dll
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\bin\Debug\netstandard2.0\ProAgil.Domain.pdb
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.csprojAssemblyReference.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.csproj.CoreCompileInputs.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.AssemblyInfoInputs.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.AssemblyInfo.cs
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.dll
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Domain\obj\Debug\netstandard2.0\ProAgil.Domain.pdb

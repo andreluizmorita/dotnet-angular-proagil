@@ -5,7 +5,7 @@ namespace ProAgil.Domain
 {
     public class Lote
     {
-        public int id { get; set; }
+        public int Id { get; set; }
         public string Nome { get; set; }
         public decimal Preco { get; set; }
         public DateTime? DataInicio { get; set; }

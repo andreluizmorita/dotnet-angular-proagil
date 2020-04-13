@@ -1,10 +1,9 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 
-namespace ProAgil.Domain
+namespace ProAgil.WebApi.Dtos
 {
-    public class Evento
+    public class EventoDto
     {
         public int Id { get; set; }   
         public string Local { get; set; }
@@ -14,11 +13,9 @@ namespace ProAgil.Domain
         public string Telefone { get; set; }
         public string Lote { get; set; }
         public string ImageUrl { get; set; }
-
-        [EmailAddress]
         public string Email { get; set; }
-        public List<Lote> Lotes { get; set; }
-        public List<RedeSocial> RedesSociais { get; set; }
-        public List<PalestranteEvento> PalestranteEvento { get; set; }
+        public List<LoteDto> Lotes { get; set; }
+        public List<RedeSocialDto> RedesSociais { get; set; }
+        public List<PalestranteDto> Palestrantes { get; set; }
     }
 }

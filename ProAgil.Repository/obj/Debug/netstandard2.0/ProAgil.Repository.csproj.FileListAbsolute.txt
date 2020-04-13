@@ -10,3 +10,15 @@ C:\CSharp\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.Assembl
 C:\CSharp\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.csproj.CopyComplete
 C:\CSharp\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.dll
 C:\CSharp\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.pdb
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\bin\Debug\netstandard2.0\ProAgil.Repository.deps.json
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\bin\Debug\netstandard2.0\ProAgil.Repository.dll
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\bin\Debug\netstandard2.0\ProAgil.Repository.pdb
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\bin\Debug\netstandard2.0\ProAgil.Domain.dll
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\bin\Debug\netstandard2.0\ProAgil.Domain.pdb
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.csprojAssemblyReference.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.csproj.CoreCompileInputs.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.AssemblyInfoInputs.cache
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.AssemblyInfo.cs
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.csproj.CopyComplete
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.dll
+D:\wwwroot\estudos\dotnet-angular-proagil\ProAgil.Repository\obj\Debug\netstandard2.0\ProAgil.Repository.pdb
