@@ -50,9 +50,10 @@ namespace ProAgil.WebApi.Controllers
                 var results = _mapper.Map<EventoDto>(evento);
                 return Ok(results);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                    $"Server error. Erro: {ex.Message}");
             }
         }
 
@@ -65,9 +66,10 @@ namespace ProAgil.WebApi.Controllers
                 var results = await _repository.GetAllEventosAsyncByTema(tema, true);
                 return Ok(results);
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                    $"Server error. Erro: {ex.Message}");
             }
         }
 
@@ -75,19 +77,28 @@ namespace ProAgil.WebApi.Controllers
         [HttpPost]
         public async Task<IActionResult> Post(EventoDto model)
         {   
+            // Sem o [ApiController]
+            // public async Task<IActionResult> Post([FromBody]EventoDto model)
+            // {   
+            // if (!ModelState.IsValid)
+            // {
+            //     return this.StatusCode(StatusCodes.Status400BadRequest, ModelState);
+            // }
+
             try
             {   
                 var evento = _mapper.Map<Evento>(model);
-                _repository.Add(model);
+                _repository.Add(evento);
 
                 if(await _repository.SaveChangesAsync())
                 {
                     return Created($"/api/evento/{model.Id}", model);
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                    $"Server error. Erro: {ex.Message}");
             }
 
             return BadRequest();
@@ -112,9 +123,10 @@ namespace ProAgil.WebApi.Controllers
                     return Created($"/api/evento/{model.Id}", _mapper.Map<EventoDto>(evento));
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                    $"Server error. Erro: {ex.Message}");
             }
 
             return BadRequest();
@@ -137,9 +149,10 @@ namespace ProAgil.WebApi.Controllers
                     return Ok();
                 }
             }
-            catch (System.Exception)
+            catch (System.Exception ex)
             {
-                return this.StatusCode(StatusCodes.Status500InternalServerError, "Server error");
+                return this.StatusCode(StatusCodes.Status500InternalServerError, 
+                    $"Server error. Erro: {ex.Message}");
             }
 
             return BadRequest();

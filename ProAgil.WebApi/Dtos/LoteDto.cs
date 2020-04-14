@@ -1,4 +1,5 @@
 using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ProAgil.WebApi.Dtos
 {
@@ -9,6 +10,7 @@ namespace ProAgil.WebApi.Dtos
         public decimal Preco { get; set; }
         public DateTime DataInicio { get; set; }
         public DateTime DataFim { get; set; }
+        [Range(2, 12000)]
         public int Quantidade { get; set; }
     }
 }

@@ -13,17 +13,29 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NavComponent } from './nav/nav.component';
 
+import { ToastrModule } from 'ngx-toastr';
+
 import { EventosComponent } from './eventos/eventos.component';
+import { PalestrantesComponent } from './palestrantes/palestrantes.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
+import { ContatosComponent } from './contatos/contatos.component';
+import { TituloComponent } from './_shared/titulo/titulo.component';
+import { FooterComponent } from './_shared/footer/footer.component';
 
 import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
 
 @NgModule({
    declarations: [
       AppComponent,
-      EventosComponent,
       NavComponent,
       EventosComponent,
-      DateTimeFormatPipePipe
+      EventosComponent,
+      PalestrantesComponent,
+      DashboardComponent,
+      ContatosComponent,
+      DateTimeFormatPipePipe,
+      TituloComponent,
+      FooterComponent
    ],
    imports: [
       BrowserModule,
@@ -31,6 +43,11 @@ import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
       BsDatepickerModule.forRoot(),
       TooltipModule.forRoot(),
       ModalModule.forRoot(),
+      ToastrModule.forRoot({
+        timeOut: 3000,
+        preventDuplicates: true,
+        progressBar: true
+      }), // ToastrModule added
       AppRoutingModule,
       HttpClientModule,
       FormsModule,

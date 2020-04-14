@@ -1,6 +1,5 @@
 <div>
-  <h2>Eventos</h2>
-
+  <app-titulo [titulo]="titulo"></app-titulo>
   <div class="d-flex mb-2">
 
     <div class="form-inline mr-auto">
@@ -149,6 +148,8 @@
                   type="text"
                   class="form-control"
                   bsDatepicker
+                  value="{{dataEvento | DateTimeFormatPipe}}"
+                  [(ngModel)]="dataEvento"
                   [bsConfig]="{ dateInputFormat: 'DD/MM/YYYY hh:mm a'}"
                   [ngClass]="{'is-invalid': registerForm.get('dataEvento').errors && registerForm.get('dataEvento').touched}"
                   formControlName="dataEvento"
