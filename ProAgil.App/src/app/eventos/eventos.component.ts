@@ -186,8 +186,6 @@ export class EventosComponent implements OnInit {
   }
 
   onFileChange(event) {
-    console.info('onFileChange', event);
-
     const reader = new FileReader();
 
     if (event.target.files && event.target.files.length) {
