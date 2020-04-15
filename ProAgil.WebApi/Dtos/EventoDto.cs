@@ -18,7 +18,7 @@ namespace ProAgil.WebApi.Dtos
         [Phone]
         public string Telefone { get; set; }
         public string Lote { get; set; }
-        public string ImageUrl { get; set; }
+        public string ImagemURL { get; set; }
         [EmailAddress (ErrorMessage="E-mail invalido")]
         public string Email { get; set; }
         public List<LoteDto> Lotes { get; set; }

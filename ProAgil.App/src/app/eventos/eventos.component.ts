@@ -23,9 +23,14 @@ export class EventosComponent implements OnInit {
   modoSalvar = 'post';
   imagemLargura: number = 50;
   imagemMargem: number = 2;
-  mostrarImagem: boolean = true;
+  mostrarImagem: boolean = false;
   registerForm: FormGroup;
   bodyDeletarEvento = '';
+
+  file: File;
+  fileNameToUpdate: string;
+  dataAtual: string;
+
   _filtroLista: string = '';
 
   constructor(
@@ -99,7 +104,7 @@ export class EventosComponent implements OnInit {
           Validators.maxLength(12000)
         ]
       ],
-      imageUrl: ['', Validators.required],
+      imagemURL: ['', Validators.required],
       telefone: ['', Validators.required],
       email: [
         '',
@@ -116,6 +121,8 @@ export class EventosComponent implements OnInit {
       if (this.modoSalvar === 'post') {
         this.evento = Object.assign({}, this.registerForm.value);
 
+        this.uploadImagem();
+
         this.eventoService.postEvento(this.evento).subscribe(
           () => {
             template.hide();
@@ -128,6 +135,9 @@ export class EventosComponent implements OnInit {
         );
       } else {
         this.evento = Object.assign({id: this.evento.id}, this.registerForm.value);
+
+        this.uploadImagem();
+
         this.eventoService.putEvento(this.evento).subscribe(
           () => {
             template.hide();
@@ -150,7 +160,9 @@ export class EventosComponent implements OnInit {
   editarEvento(template: any, evento: Evento) {
     this.modoSalvar = 'put';
     this.openModal(template);
-    this.evento = evento;
+    this.evento = Object.assign({id: this.evento.id}, evento);
+    this.fileNameToUpdate = evento.imagemURL.toString();
+    this.evento.imagemURL = '';
     this.registerForm.patchValue(evento);
   }
 
@@ -158,7 +170,6 @@ export class EventosComponent implements OnInit {
     template.show();
     this.evento = evento;
     this.bodyDeletarEvento = `Tem certeza que deseja excluir o Evento: ${evento.tema}, ID: ${evento.id}`;
-
   }
 
   confirmarExcluir(template: any) {
@@ -172,5 +183,34 @@ export class EventosComponent implements OnInit {
         console.error(error);
       }
     );
+  }
+
+  onFileChange(event) {
+    console.info('onFileChange', event);
+
+    const reader = new FileReader();
+
+    if (event.target.files && event.target.files.length) {
+      this.file = event.target.files;
+    }
+  }
+
+  uploadImagem() {
+    if (this.modoSalvar === 'post') {
+      const nomeArquivo = this.evento.imagemURL.split('\\', 3);
+      this.evento.imagemURL = nomeArquivo[2];
+      this.eventoService.postUpload(this.file, nomeArquivo[2])
+        .subscribe(() => {
+          this.dataAtual = new Date().getMilliseconds().toString();
+          this.getEventos();
+        });
+    } else {
+      this.evento.imagemURL = this.fileNameToUpdate;
+      this.eventoService.postUpload(this.file, this.fileNameToUpdate)
+        .subscribe(() => {
+          this.dataAtual = new Date().getMilliseconds().toString();
+          this.getEventos();
+        });
+    }
   }
 }
