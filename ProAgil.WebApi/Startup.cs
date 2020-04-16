@@ -98,6 +98,8 @@ namespace ProAgil.WebApi
                 app.UseHsts();
             }
 
+            app.UseAuthentication();
+
             // app.UseHttpsRedirection();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseStaticFiles();

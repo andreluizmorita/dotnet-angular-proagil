@@ -42,7 +42,7 @@ namespace ProAgil.WebApi.Controllers
         [HttpGet("GetUser")]
         public async Task<IActionResult> GetUser(UserDto userDto)
         {
-            return Ok(userDto);
+            return Ok();
         }
 
         [HttpPost("Register")]
@@ -116,9 +116,8 @@ namespace ProAgil.WebApi.Controllers
                 claims.Add(new Claim(ClaimTypes.Role, role));
             }
 
-            var key = new SymmetricSecurityKey(
-                Encoding.ASCII.GetBytes(_config.GetSection("AppSettings:Token").Value)
-            );
+            var key = new SymmetricSecurityKey(Encoding.ASCII
+                .GetBytes(_config.GetSection("AppSettings:Token").Value));
 
             var creds = new SigningCredentials(key, SecurityAlgorithms.HmacSha512Signature);
 
