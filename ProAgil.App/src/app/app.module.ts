@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,11 @@ import { TituloComponent } from './_shared/titulo/titulo.component';
 import { FooterComponent } from './_shared/footer/footer.component';
 
 import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
+import { UserComponent } from './user/user.component';
+import { RegistrationComponent } from './user/registration/registration.component';
+import { LoginComponent } from './user/login/login.component';
+import { EventoService } from './_services/evento.service';
+import { AuthInterceptor } from './auth/auth.interceptor';
 
 @NgModule({
    declarations: [
@@ -35,7 +40,10 @@ import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
       ContatosComponent,
       DateTimeFormatPipePipe,
       TituloComponent,
-      FooterComponent
+      FooterComponent,
+      UserComponent,
+      RegistrationComponent,
+      LoginComponent
    ],
    imports: [
       BrowserModule,
@@ -54,7 +62,14 @@ import { DateTimeFormatPipePipe } from './_helps/DateTimeFormatPipe.pipe';
       ReactiveFormsModule,
       BrowserAnimationsModule
    ],
-   providers: [],
+   providers: [
+     EventoService,
+     {
+       provide: HTTP_INTERCEPTORS,
+       useClass: AuthInterceptor,
+       multi: true
+     }
+   ],
    bootstrap: [
       AppComponent
    ]
