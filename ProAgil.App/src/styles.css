@@ -3,7 +3,7 @@
 @import '../node_modules/@fortawesome/fontawesome-free/css/all.min.css';
 @import '../node_modules/ngx-bootstrap/datepicker/bs-datepicker.css';
 
-body {
+.titulo {
   padding-top: 4.5rem;
 }
 

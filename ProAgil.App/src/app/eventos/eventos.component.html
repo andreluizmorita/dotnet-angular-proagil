@@ -39,6 +39,7 @@
         <td>Qtd Pessoas</td>
         <td>Lote</td>
         <td>Opções</td>
+        <td></td>
       </tr>
     </thead>
     <tbody *ngIf="eventosFiltrados && eventos.length">
@@ -68,21 +69,25 @@
         <td>
           <div class="btn-group">
             <button
-              class="btn btn-xs btn-success"
+              class="btn btn-sm btn-success"
               tooltip="Editar"
               (click)="editarEvento(template, evento)"
             >
               <i class="fa fa-edit"></i>
             </button>
             <button
-              class="btn btn-xs btn-danger"
+              class="btn btn-sm btn-danger"
               tooltip="Excluir"
               (click)="excluirEvento(confirm, evento)"
             >
               <i class="fa fa-trash"></i>
             </button>
           </div>
-
+        </td>
+        <td>
+          <a [routerLink]="['/evento', evento.id, 'edit']" tooltip="Edicao detalhada" class="btn btn-sm btn-warning">
+            <i class="fa fa-edit"></i>
+          </a>
         </td>
       </tr>
     </tbody>
@@ -188,12 +193,6 @@
                     </td>
                   </tr>
                 </table>
-                <!-- <input
-                  type="text"
-                  class="form-control"
-                  [ngClass]="{'is-invalid': registerForm.get('imagemURL').errors && registerForm.get('imagemURL').touched}"
-                  formControlName="imagemURL"> -->
-
                 <div class="invalid-feedback">
                   Imagem é obrigatório
                 </div>
