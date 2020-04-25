@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using AutoMapper;
@@ -111,10 +112,52 @@ namespace ProAgil.WebApi.Controllers
         public async Task<IActionResult> Put(int EventoId, EventoDto model)
         {   
             try
-            {
+            {   
                 var evento = await _repository.GetEventoAsyncById(EventoId, false);
 
                 if(evento == null) return NotFound();
+
+                var idLotes = new List<int>();
+                var idRedesSociais = new List<int>();
+
+                // MODO - 002
+                model.Lotes.ForEach(item => idLotes.Add(item.Id));
+                model.RedesSociais.ForEach(item => idRedesSociais.Add(item.Id));
+
+                var lotes = evento.Lotes.Where(
+                    lote => !idLotes.Contains(lote.Id)
+                ).ToArray();
+
+                var redesSociais = evento.RedesSociais.Where(
+                    redeSocial => !idRedesSociais.Contains(redeSocial.Id)
+                ).ToArray();
+
+                if (lotes.Length > 0) _repository.DeleteRange(lotes);
+                if (redesSociais.Length > 0) _repository.DeleteRange(redesSociais);
+
+                // MODO - 001
+                // foreach(var item in model.Lotes)
+                // {
+                //     idLotes.Add(item.Id);
+                // }
+
+                // foreach (var item in model.RedesSociais)
+                // {
+                //     idRedesSociais.Add(item.Id);
+                // }
+
+                // var lotes = evento.Lotes.Where(lote => !idLotes.Contains(lote.Id)).ToList<Lote>();
+                // var redesSociais = evento.RedesSociais.Where(redeSocial => !idRedesSociais.Contains(redeSocial.Id)).ToList<RedeSocial>();
+                
+                // if (lotes.Count() > 0) 
+                // {
+                //     lotes.ForEach(lote => _repository.Delete(lote));
+                // }
+                   
+                // if (redesSociais.Count() > 0) 
+                // {
+                //     redesSociais.ForEach(redeSocial => _repository.Delete(redeSocial));
+                // }
 
                 _mapper.Map(model, evento);
 
@@ -164,7 +207,9 @@ namespace ProAgil.WebApi.Controllers
         public async Task<IActionResult> upload()
         {
             try 
-            {
+            {   
+                var eventos = await _repository.GetAllEventosAsync(true);
+
                 var file = Request.Form.Files[0];
                 var folderName = Path.Combine("Resources", "Images");
                 var pathToSave = Path.Combine(Directory.GetCurrentDirectory(), folderName);

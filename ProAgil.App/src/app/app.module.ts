@@ -16,6 +16,7 @@ import { NavComponent } from './nav/nav.component';
 
 import { ToastrModule } from 'ngx-toastr';
 import { NgxMaskModule, IConfig } from 'ngx-mask'
+import { NgxCurrencyModule } from 'ngx-currency';
 
 import { EventosComponent } from './eventos/eventos.component';
 import { PalestrantesComponent } from './palestrantes/palestrantes.component';
@@ -62,6 +63,7 @@ import { EventoEditComponent } from './eventos/evento-edit/evento-edit.component
         }), // ToastrModule added
         TabsModule.forRoot(),
         NgxMaskModule.forRoot(),
+        NgxCurrencyModule,
         AppRoutingModule,
         HttpClientModule,
         FormsModule,
